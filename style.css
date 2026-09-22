@@ -609,10 +609,11 @@ h1 {
     height: 28px;
   }
   .hero {
-    height: 850px;
+    height: auto;
     max-width: 540px;
     margin: auto;
     padding-top: 29px;
+    padding-bottom: 38px;
     display: flex;
     flex-direction: column;
   }
@@ -662,41 +663,41 @@ h1 {
     top: auto;
     flex: none;
     width: calc(100% - 40px);
-    height: 286px;
+    aspect-ratio: 984 / 808;
+    height: auto;
     margin: 20px 20px 0;
     border-radius: 8px;
   }
   .hero-visual > img {
-    width: calc(100% + 18px);
-    height: auto;
-    left: -18px;
-    bottom: -11px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    left: 0;
+    bottom: 0;
   }
+  /* On mobile the button belongs to the hero image.
+     Keeping it in the page (instead of position: fixed) matches the Figma
+     and also stops it from disappearing while scrolling. */
   .primary-button {
-    position: fixed;
-    z-index: 5;
+    position: relative;
+    z-index: 3;
     top: auto;
-    bottom: 56px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: auto;
+    left: auto;
+    transform: none;
+    align-self: center;
     width: 344px;
     max-width: calc(100% - 40px);
     height: 60px;
+    margin-top: -72px;
     border-radius: 10px;
     font-size: 22px;
-    transition:
-      opacity 0.2s,
-      visibility 0.2s;
-  }
-  .primary-button.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    flex: none;
   }
   .rating {
     position: static;
     align-self: center;
-    margin: 11px 0 0;
+    margin: 14px 0 0;
     width: 302px;
     height: 36px;
     display: flex;
@@ -765,8 +766,8 @@ h1 {
     font-size: 11.4px;
   }
   .carousel-controls {
-    width: auto;
-    margin: 17px 20px 0 0;
+    width: calc(100% - 40px);
+    margin: 17px auto 0;
     max-width: 344px;
   }
   .carousel-controls > button {
@@ -865,8 +866,9 @@ h1 {
   .how-it-works > .carousel-controls {
     display: flex;
     position: relative;
-    margin: 30px 20px 0 21px;
-    max-width: none;
+    width: calc(100% - 40px);
+    margin: 30px auto 0;
+    max-width: 540px;
   }
   .site-footer {
     height: 675px;
@@ -909,23 +911,137 @@ h1 {
   }
 }
 @media (min-width: 541px) and (max-width: 900px) {
-  .hero {
-    height: auto;
-    padding-bottom: 40px;
+  .primary-button {
+    width: 360px;
   }
-  .hero-visual {
-    height: 375px;
-  }
-  .hero-visual > img {
-    height: auto;
-    bottom: -15px;
-  }
+
   .reviews-container {
+    padding-left: 0;
     max-width: none;
+  }
+  .review-track {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .testimonials .carousel-controls {
+    max-width: 540px;
   }
   .testimonials h2 {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Tablet: all three steps are visible, so this is not a carousel here. */
+  .how-it-works {
+    width: calc(100% - 40px);
+    height: 540px;
+    margin: 60px 20px 0;
+    border-radius: 18px;
+  }
+  .steps-heading {
+    padding-top: 36px;
+  }
+  .eyebrow {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .steps-heading h2 {
+    max-width: none;
+    padding: 0 20px;
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.25;
+    margin-top: 7px;
+  }
+  .steps-heading h2 em {
+    display: inline;
+  }
+  .how-it-works > .carousel-window {
+    margin: 28px 18px 0;
+  }
+  .steps-track {
+    height: 320px;
+    gap: 14px;
+    padding: 0;
+    justify-content: center;
+    align-items: end;
+  }
+  .step,
+  .step-doctor {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 270px;
+    height: 300px;
+    padding-top: 13px;
+  }
+  .step-card {
+    border-radius: 14px;
+  }
+  .step-number {
+    width: 26px;
+    height: 26px;
+    font-size: 15px;
+  }
+  .step h3 {
+    font-size: clamp(14px, 2vw, 19px);
+    line-height: 1.25;
+    margin: 32px 6px 0;
+  }
+  .step .phone {
+    width: 68%;
+    top: 120px;
+  }
+  .step .doctor {
+    width: 92%;
+    left: 4%;
+    top: 112px;
+  }
+  .step .parcel {
+    width: 170%;
+    left: -38%;
+    top: 158px;
+  }
+  .how-it-works > .carousel-controls {
+    display: none;
+  }
+
+  /* Tablet footer follows the compact desktop layout instead of the tall mobile one. */
+  .site-footer {
+    height: 330px;
+    margin: 60px 20px 34px;
+    border-radius: 24px;
+  }
+  .footer-top {
+    height: 92px;
+    padding: 0 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .footer-logo img {
+    width: 155px;
+    height: auto;
+  }
+  .socials {
+    width: 250px;
+    height: 36px;
+    margin: 0;
+  }
+  .trust-marks {
+    width: 270px;
+    height: auto;
+    margin: 24px auto 16px;
+  }
+  .disclaimer {
+    max-width: 650px;
+    padding: 0 28px;
+    font-size: 9px;
+    line-height: 13px;
+  }
+  .copyright {
+    font-size: 9px;
+    line-height: 13px;
+    margin-top: 12px;
   }
 }
 @media (max-width: 360px) {
@@ -936,11 +1052,8 @@ h1 {
   .benefits {
     font-size: 14px;
   }
-  .hero {
-    height: 830px;
-  }
   .hero-visual {
-    height: 276px;
+    aspect-ratio: 984 / 808;
   }
   .rating {
     transform: scale(0.9);

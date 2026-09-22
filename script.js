@@ -23,7 +23,8 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
 
   function update(next, announce = true) {
     index = (next + cards.length) % cards.length;
-    const mobile = matchMedia("(max-width: 900px)").matches;
+    const mobileBreakpoint = section.dataset.carousel === "steps" ? 540 : 900;
+    const mobile = matchMedia(`(max-width: ${mobileBreakpoint}px)`).matches;
     if (mobile) {
       cards.forEach((card) => {
         card.style.order = "";
@@ -82,21 +83,8 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
   update(0, false);
 });
 
-// Short mobile frame includes a floating CTA; it disappears after the hero.
+// The CTA stays inside the hero on every screen size.
 const requestButton = document.querySelector("[data-request]");
-function updateMobileCTA() {
-  const heroBottom = document
-    .querySelector(".hero-visual")
-    .getBoundingClientRect().bottom;
-  requestButton.classList.toggle(
-    "is-hidden",
-    matchMedia("(max-width: 900px)").matches &&
-      heroBottom < window.innerHeight - 40,
-  );
-}
-addEventListener("scroll", updateMobileCTA, { passive: true });
-addEventListener("resize", updateMobileCTA);
-updateMobileCTA();
 
 // No real prescription endpoint or approved social URLs were supplied.
 const notice = document.querySelector(".notice");
