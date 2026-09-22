@@ -1,6 +1,6 @@
 # Webmaster Assignment - Helfy
 
-This project is a responsive landing page recreated from the provided Figma design.
+Responsive landing page implementation based on the provided Figma design.
 
 ## Technologies Used
 
@@ -12,35 +12,37 @@ No frontend frameworks or CSS frameworks were used.
 
 ## How to Run
 
-1. Download or clone the project.
+1. Download or clone the repository.
 2. Open the project folder.
-3. Open `index.html` in your browser.
+3. Open `index.html` in a browser.
 
-You can also run the project with a local server such as VS Code Live Server.
+Alternatively, the project can be run using a local development server such as VS Code Live Server.
 
-No installation or additional setup is required.
+No installation or build process is required.
 
 ## Responsive Design
 
-The page is optimized for:
+The page was implemented and tested for:
 
 - 1920px desktop
-- 1280px desktop/laptop
+- 1280px desktop / laptop
 - 390px mobile
 
-The layout also adapts to intermediate screen sizes.
+The layout also adapts to intermediate screen sizes without horizontal scrolling or overlapping content.
 
-## Implemented Sections
+## Implemented Features
 
+- Responsive header and sticky navigation
 - Hero section
 - Benefits
 - Trust elements
-- CTA
-- Testimonials
-- How it works
+- CTA with hover state
+- Testimonials carousel
+- How-it-works section
+- Responsive mobile carousel
 - Footer
-- Responsive layouts
-- JavaScript interactions
+- Keyboard and touch interactions
+- Responsive layouts for desktop, tablet and mobile
 
 ## Unfinished Elements
 
