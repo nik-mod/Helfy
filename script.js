@@ -1,5 +1,13 @@
 "use strict";
+const header = document.querySelector(".site-header");
 
+function updateHeader() {
+  header.classList.toggle("is-sticky", window.scrollY > 80);
+}
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+
+updateHeader();
 // Desktop reviews rotate existing cards; mobile uses a sliding track.
 document.querySelectorAll("[data-carousel]").forEach((section) => {
   const track = section.querySelector(".carousel-track");
