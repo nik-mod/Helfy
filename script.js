@@ -18,7 +18,6 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
 
   let index = 0;
   let touchStart = null;
-
   const dotButtons = cards.map((_, number) => {
     const button = document.createElement("button");
 

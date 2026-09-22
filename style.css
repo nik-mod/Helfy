@@ -30,7 +30,6 @@
   font-weight: 400;
   font-display: swap;
 }
-
 :root {
   --u: min(0.0520833333vw, 1px);
   --green: #008f28;
