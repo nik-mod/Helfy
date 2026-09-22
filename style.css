@@ -96,6 +96,14 @@ a:focus-visible,
 }
 
 /* Desktop reference: 1920px. One --u is one original Figma pixel at 1920px. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: calc(89 * var(--u));
+  background: #fff;
+}
+
 .service-bar {
   position: relative;
   height: calc(42 * var(--u));
@@ -133,13 +141,121 @@ a:focus-visible,
   align-items: center;
 }
 .logo-bar {
-  height: calc(89 * var(--u));
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 calc(28 * var(--u));
+  background: #fff;
 }
+
+.header-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
 .logo-bar img {
   width: calc(215 * var(--u));
+}
+
+.header-actions {
+  display: none;
+  align-items: center;
+  gap: calc(22 * var(--u));
+  margin-left: auto;
+}
+
+.site-header.is-sticky {
+  height: calc(64 * var(--u));
+  box-shadow: 0 2px 10px #0000000d;
+}
+
+.site-header.is-sticky .logo-bar {
+  justify-content: flex-start;
+}
+
+.site-header.is-sticky .logo-bar img {
+  width: calc(178 * var(--u));
+}
+
+.site-header.is-sticky .header-actions {
+  display: flex;
+}
+
+.treatments-button {
+  width: calc(170 * var(--u));
+  height: calc(44 * var(--u));
+  border: 0;
+  border-radius: calc(10 * var(--u)) calc(10 * var(--u)) 0 0;
+  background: linear-gradient(90deg, #24a56b, #76b73f);
+  color: #fff;
+  font-size: calc(14 * var(--u));
+  font-weight: 500;
+}
+
+.header-icon-button,
+.profile-button,
+.menu-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.header-icon-button {
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  display: grid;
+  place-items: center;
+}
+
+.header-icon-button svg {
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+  fill: none;
+  stroke: #171a1f;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.profile-button {
+  position: relative;
+  width: calc(36 * var(--u));
+  height: calc(36 * var(--u));
+  border-radius: 50%;
+  background: linear-gradient(135deg, #31a66c, #7fbd46);
+  color: #fff;
+  font-size: calc(13 * var(--u));
+  font-weight: 600;
+}
+
+.profile-button i {
+  position: absolute;
+  right: calc(-2 * var(--u));
+  bottom: calc(-1 * var(--u));
+  width: calc(9 * var(--u));
+  height: calc(9 * var(--u));
+  border: calc(2 * var(--u)) solid #fff;
+  border-radius: 50%;
+  background: #9bcf78;
+}
+
+.menu-button {
+  width: calc(30 * var(--u));
+  height: calc(26 * var(--u));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-button span {
+  width: 100%;
+  height: calc(2 * var(--u));
+  background: #171a1f;
+  border-radius: 2px;
+}
+
+.header-actions button:hover {
+  opacity: 0.88;
 }
 .hero {
   height: calc(839 * var(--u));
@@ -233,8 +349,19 @@ h1 {
   letter-spacing: 0.02em;
   box-shadow: 0 5px 12px #10893d19;
 }
+.primary-button {
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
 .primary-button:hover {
-  background: #0d3b30;
+  background: #079c3a;
+  border: 2px solid #b7e600;
+  box-shadow:
+    0 0 8px #b7e600,
+    0 0 14px rgba(183, 230, 0, 0.55);
 }
 .rating {
   position: absolute;
@@ -601,12 +728,27 @@ h1 {
     gap: 25px;
     padding-left: 14px;
   }
-  .logo-bar {
+  .site-header,
+  .site-header.is-sticky {
     height: 60px;
   }
-  .logo-bar img {
+
+  .logo-bar,
+  .site-header.is-sticky .logo-bar {
+    height: 60px;
+    justify-content: center;
+    padding: 0 20px;
+  }
+
+  .logo-bar img,
+  .site-header.is-sticky .logo-bar img {
     width: 175px;
     height: 28px;
+  }
+
+  .header-actions,
+  .site-header.is-sticky .header-actions {
+    display: none;
   }
   .hero {
     height: auto;

@@ -31,12 +31,9 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
   function update(next, announce = true) {
     index = (next + cards.length) % cards.length;
 
-    const mobileBreakpoint =
-      section.dataset.carousel === "steps" ? 540 : 900;
+    const mobileBreakpoint = section.dataset.carousel === "steps" ? 540 : 900;
 
-    const mobile = matchMedia(
-      `(max-width: ${mobileBreakpoint}px)`,
-    ).matches;
+    const mobile = matchMedia(`(max-width: ${mobileBreakpoint}px)`).matches;
 
     if (mobile) {
       cards.forEach((card) => {
@@ -60,17 +57,12 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
     }
 
     dotButtons.forEach((button, number) => {
-      button.setAttribute(
-        "aria-current",
-        String(number === index),
-      );
+      button.setAttribute("aria-current", String(number === index));
     });
 
     if (announce) {
       status.textContent = `${
-        section.dataset.carousel === "steps"
-          ? "Schritt"
-          : "Bewertung"
+        section.dataset.carousel === "steps" ? "Schritt" : "Bewertung"
       } ${index + 1} von ${cards.length}`;
     }
   }
@@ -107,11 +99,9 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
     (event) => {
       if (!touchStart) return;
 
-      const x =
-        event.changedTouches[0].clientX - touchStart.x;
+      const x = event.changedTouches[0].clientX - touchStart.x;
 
-      const y =
-        event.changedTouches[0].clientY - touchStart.y;
+      const y = event.changedTouches[0].clientY - touchStart.y;
 
       if (Math.abs(x) > 40 && Math.abs(x) > Math.abs(y)) {
         update(index + (x < 0 ? 1 : -1));
@@ -122,9 +112,7 @@ document.querySelectorAll("[data-carousel]").forEach((section) => {
     { passive: true },
   );
 
-  new ResizeObserver(() =>
-    update(index, false),
-  ).observe(viewport);
+  new ResizeObserver(() => update(index, false)).observe(viewport);
 
   update(0, false);
 });
